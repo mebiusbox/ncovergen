@@ -15,13 +15,13 @@ export default async function handler(req: NextRequest) {
 
   const { searchParams } = new URL(req.url);
   const text = searchParams.get('text') ?? 'title';
-  const size = searchParams.get('size') ?? '128';
+  const size = searchParams.get('size') ?? '100';
   const fg = searchParams.get('fg') ?? '404040';
   const bg = searchParams.get('bg') ?? 'ffefe3';
 
   let fontsize = Number(size);
   if (isNaN(fontsize)) {
-    fontsize = 128;
+    fontsize = 100;
   }
   
   return new ImageResponse(
@@ -29,8 +29,8 @@ export default async function handler(req: NextRequest) {
       <Cover text={text} size={fontsize} fg={'#'+fg} bg={'#'+bg} />
     ),
     {
-      width: 1500,
-      height: 600,
+      width: 1000,
+      height: 400,
       fonts: [
         {
           name: 'Signika',
