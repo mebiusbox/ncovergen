@@ -25,7 +25,6 @@ export default function Home() {
         <h2>endpoint</h2>
         <pre>
           /api/sans<br />
-          /api/serif<br />
           /api/signika<br />
         </pre>
         <h2>parameters</h2>
