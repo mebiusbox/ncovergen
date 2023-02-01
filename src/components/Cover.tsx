@@ -1,11 +1,12 @@
 interface Props {
   text: string;
-  size: number,
+  size: number;
   fg: string;
   bg: string;
+  antialias: boolean;
 }
-const Cover = ({ text, size, fg, bg }: Props) => {
-  console.log(text, size, fg, bg)
+const Cover = ({ text, size, fg, bg, antialias }: Props) => {
+  const antialiasStyle = {transform: 'rotate(0.028deg)'};
   return (
     <div
       style={{
@@ -20,7 +21,7 @@ const Cover = ({ text, size, fg, bg }: Props) => {
         justifyContent: 'center',
       }}
     >
-      {text}
+      <h1 style={antialias?antialiasStyle:{}}>{text}</h1>
     </div>
   );
 };

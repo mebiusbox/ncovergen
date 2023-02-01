@@ -15,22 +15,23 @@ export default async function handler(req: NextRequest) {
 
   const { searchParams } = new URL(req.url);
   const text = searchParams.get('text') ?? 'title';
-  const size = searchParams.get('size') ?? '100';
+  const size = searchParams.get('size') ?? '200';
   const fg = searchParams.get('fg') ?? '404040';
   const bg = searchParams.get('bg') ?? 'ffefe3';
+  const antialias = searchParams.has('antialias');
 
   let fontsize = Number(size);
   if (isNaN(fontsize)) {
-    fontsize = 100;
+    fontsize = 200;
   }
   
   return new ImageResponse(
     (
-      <Cover text={text} size={fontsize} fg={'#'+fg} bg={'#'+bg} />
+      <Cover text={text} size={fontsize} fg={'#'+fg} bg={'#'+bg} antialias={antialias} />
     ),
     {
-      width: 1000,
-      height: 400,
+      width: 2000,
+      height: 800,
       fonts: [
         {
           name: 'Signika',
